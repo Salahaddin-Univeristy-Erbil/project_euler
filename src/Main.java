@@ -3,24 +3,19 @@ import java.util.TreeSet;
 // from rosetta stone
 public class Main {
     public static void main(String[] str) {
-        int pal = 0;
-        for (int i = 999; i >= 100; i--) {
-            for (int j = 999; j >= i; j--) {
-                int t = i * j;
-                if (isPalindrome("" + t)) {
-                    if (pal < t)
-                        pal = t;
-                }
+        int n = 2;
+        while (true) {
+            if(isDivisible(n)){
+                System.out.println(n);
+                break;
             }
+            n+=2;
         }
-        System.out.println(pal);
     }
-
-    public static boolean isPalindrome(String p) {
-        int length = p.length() - 1;
-        int loop = length / 2;
-        for (int i = 0; i <= loop; i++) {
-            if (p.charAt(i) != p.charAt(length - i))
+//232792560
+    public static boolean isDivisible(int n) {
+        for (int i = 2; i <= 20; i++) {
+            if (n % i != 0)
                 return false;
         }
         return true;
