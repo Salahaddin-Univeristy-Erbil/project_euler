@@ -1,23 +1,23 @@
+import java.util.LinkedList;
 import java.util.TreeSet;
 
 // from rosetta stone
 public class Main {
+    static LinkedList<Long> primes = new LinkedList<>();
     public static void main(String[] str) {
-        int n = 2;
-        while (true) {
-            if(isDivisible(n)){
-                System.out.println(n);
-                break;
-            }
-            n+=2;
+        primes.add(2L);
+        long next = 3L;
+        while(primes.size() != 10001){
+            if(isPrime(next))
+                primes.add(next);
+            next += 2;
         }
+        System.out.println(primes.getLast());
     }
-//232792560
-    public static boolean isDivisible(int n) {
-        for (int i = 2; i <= 20; i++) {
-            if (n % i != 0)
+    public static boolean isPrime(Long p){
+        for(Long l : primes)
+            if(p % l == 0)
                 return false;
-        }
         return true;
     }
 }
